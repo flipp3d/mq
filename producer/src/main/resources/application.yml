@@ -1,0 +1,49 @@
+spring:
+
+
+  rabbitmq:
+    addresses: localhost
+    username: admin
+    password: admin
+    virtual-host: /admin
+    publisher-returns: true
+    publisher-confirms: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+      direct:
+        acknowledge-mode: manual
+    template:
+      mandatory: true
+
+
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 380068868
+    url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    username: sa
+#    password: 380068868
+#    url: jdbc:sqlserver://192.168.8.117:1433;DatabaseName=ZZCJ
+
+
+#  jpa:
+#    database-platform: org.hibernate.dialect.SQLServer2008Dialect #jpa方言
+#    hibernate:
+#      ddl-auto: none
+#      enable_lazy_load_no_trans: false
+#
+#    show-sql: true
+#    open-in-view: true
+logging:
+  level:
+    mq.producer.timing.ProducerSchedule: trace
+server:
+  port: 8080
+mybatis:
+  type-aliases-package: mq.producer.domain
+  mapper-locations: classpath:mapper/*.xml
+

@@ -1,0 +1,46 @@
+spring:
+  rabbitmq:
+    addresses: localhost
+    username: admin
+    password: admin
+    virtual-host: /admin
+    publisher-returns: true
+    publisher-confirms: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+      direct:
+       acknowledge-mode: manual
+    template:
+      mandatory: true
+  #    addresses: 10.91.235.252
+#    username: me
+#    password: Pass1234
+#    virtual-host: imes
+  thymeleaf:
+    cache: false
+#  datasource:
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    username: sa
+#    password: 380068868
+#    url: jdbc:sqlserver://192.168.8.117:1433;DatabaseName=ZZ02_CENTER
+#
+#
+#  jpa:
+#    database-platform: org.hibernate.dialect.SQLServer2008Dialect #jpa方言
+#    hibernate:
+#      ddl-auto: none
+#      enable_lazy_load_no_trans: false
+#
+#    show-sql: true
+#    open-in-view: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 380068868
+    url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+
+server:
+  port: 80
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
