@@ -30,15 +30,15 @@ public class ProducerSchedule implements SchedulingConfigurer
         log.info("msgs线程ID："+Thread.currentThread().getId()+";执行时间："+new Date());
 
     }
-//    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 5000)
     public void sendmsg(){
         messageProducerService.sendMessage3(1);
-        log.info("msg线程ID："+Thread.currentThread().getId()+";执行时间："+new Date());
+        log.info("msg1线程ID："+Thread.currentThread().getId()+";执行时间："+new Date());
     }
      @Scheduled(fixedDelay = 5000)
      public void sendmsg2(){
          messageProducerService.sendMessage2();
-         log.info("msg线程ID："+Thread.currentThread().getId()+";执行时间："+new Date());
+         log.info("msg2线程ID："+Thread.currentThread().getId()+";执行时间："+new Date());
      }
 
     @Override

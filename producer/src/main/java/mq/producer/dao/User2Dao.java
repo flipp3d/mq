@@ -13,7 +13,7 @@ public interface User2Dao {
     @Select("select id," +
             "name," +
             "password," +
-            "user_name userName" +
+            "user_name" +
             " from" +
             " user2 " +
             "where state =0")

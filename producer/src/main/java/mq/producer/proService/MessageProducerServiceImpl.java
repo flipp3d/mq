@@ -52,7 +52,7 @@ public class MessageProducerServiceImpl implements MessageProducerService {
                     .build();
 
             this.rabbitTemplate.convertAndSend(ProducerConfig.EXCHANGE, ProducerConfig.ROUTINGKEY, message);
-            user2Dao.reset(msgs.getId());
+//            user2Dao.reset(msgs.getId());
 
         }
     }
@@ -64,6 +64,7 @@ public class MessageProducerServiceImpl implements MessageProducerService {
         public void sendMessage3(int id) {
             User2 one = user2Dao.selectByPrimaryKey(id);
             String msg = JSON.toJSONString(one);
+            System.out.println(msg);
 //        ObjectMapper mapper = new ObjectMapper();
 //        String msg= null;
 //        try {

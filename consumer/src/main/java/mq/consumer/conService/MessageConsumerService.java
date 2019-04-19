@@ -1,31 +1,38 @@
 package mq.consumer.conService;
 
+import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
-import mq.consumer.dao.BasWorksectionDao;
 import mq.consumer.dao.User3Dao;
+import mq.consumer.vo.BasWorksection;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-
-import static mq.consumer.config.ConsumerConfig.QUEUE_NAME1;
+import java.util.List;
 
 
 @Service
 public class MessageConsumerService {
     //    public static String a;
 
+
     @Resource
     private User3Dao user3Dao;
-    @Resource
-    private BasWorksectionDao basWorksectionDao;
 
-    @RabbitListener(queues = QUEUE_NAME1)
+//    @RabbitListener(queues = ConsumerConfig.QUEUE_NAME1)
     public void receiveMessage(Message message, Channel channel) {
 //        a = text;//给页面传值的，实际不这么做
         String s = new String(message.getBody());
+//        JSONObject jsonObject = JSONObject.parseObject(s);
+
+        List<BasWorksection> ss = JSON.parseObject(s, List.class);
+        for (BasWorksection o : ss) {
+
+
+            System.out.println(o);
+        }
+//
 //        JSONObject jsonObject = JSONObject.parseObject(s);
 //        JSONArray datas = jsonObject.getJSONArray("objectDatas");
 //        for (Object data : datas) {
@@ -36,7 +43,7 @@ public class MessageConsumerService {
 //        basPlantDao.insert(object);
 //        user3Dao.insert(object);
 
-        System.out.println("***接受消息***" + s);
+//        System.out.println("***接受消息***" + ss);
 
 
         try {
